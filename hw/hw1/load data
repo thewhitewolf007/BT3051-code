@@ -1,0 +1,9 @@
+battles<-read.csv("game-of-thrones data set /battles.csv",header=TRUE,stringsAsFactors=FALSE)
+deaths<-read.csv("game-of-thrones data set /character-deaths.csv",header=TRUE,stringsAsFactors=FALSE)
+predictions<-read.csv("game-of-thrones data set /character-predictions.csv",header=TRUE,stringsAsFactors=FALSE)
+nw_deaths<-deaths[grepl("Night's Watch",deaths$Allegiances),]
+nw_297_300<-subset(nw_deaths,Death_Year>=297 & Death_Year<=300)
+nw_297_300<-nw_297_300[order(nw_297_300$Death_Year),]
+write.csv(nw_297_300,file="Night's_Watch_deaths_297-300",row.names=FALSE)
+battles_withno<-battles[!(is.na(battles$attacker_size) | is.na(battles$defender_size)),]
+battles_withno_reqdcol<-data.frame(battles_withno[,c("attacker_outcome","battle_type","attacker_size","defender_size")])

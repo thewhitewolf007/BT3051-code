@@ -1,0 +1,7 @@
+a=cir_queue()
+a.nqueue(1)
+a.nqueue(2)
+a.nqueue(3)
+a.dqueue()
+a.nqueue(4)
+a.nqueue(5)
